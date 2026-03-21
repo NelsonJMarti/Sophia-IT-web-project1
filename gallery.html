@@ -17,7 +17,6 @@
             <a href="testimonials.html">Testimonials</a>
         </nav>
         <br>
-        <button type="button">View Cart</button>
     </header>
 
     <main>
@@ -27,62 +26,64 @@
                 <td align="center">
                     <img src="images/birdhouse.png" alt="Product 1" width="150">
                     <p>Birdhouse<br>$10.00</p>
-                    <button type="button">Add to Cart</button>
+                    <button class="add-btn" type="button">Add to Cart</button>
                 </td>
                 <td align="center">
                     <img src="images/Client1_AloePlant.png" alt="Product 2" width="150">
                     <p>Aloe Plant<br>$15.00</p>
-                    <button type="button">Add to Cart</button>
+                    <button class="add-btn" type="button">Add to Cart</button>
                 </td>
                 <td align="center">
                     <img src="images/Client1_AppleTree.png" alt="Product 3" width="150">
                     <p>Apple Tree<br>$200.00</p>
-                    <button type="button">Add to Cart</button>
+                    <button class="add-btn" type="button">Add to Cart</button>
                 </td>
             </tr>
             <tr>
                 <td align="center">
                     <img src="images/Client1_BirchTree.png" alt="Product 4" width="150">
                     <p>Birch Tree<br>$500.00</p>
-                    <button type="button">Add to Cart</button>
+                    <button class="add-btn" type="button">Add to Cart</button>
                 </td>
                 <td align="center">
                     <img src="images/Client1_MapleTree.png" alt="Product 5" width="150">
                     <p>Maple Tree<br>$300.00</p>
-                    <button type="button">Add to Cart</button>
+                    <button class="add-btn" type="button">Add to Cart</button>
                 </td>
                 <td align="center">
                     <img src="images/Client1_PottingSoil.png" alt="Product 6" width="150">
                     <p>Potting Soil<br>$5.00</p>
-                    <button type="button">Add to Cart</button>
+                    <button class="add-btn" type="button">Add to Cart</button>
                 </td>
             </tr>
             <tr>
                 <td align="center">
                     <img src="images/Client1_SpiderPlant.png" alt="Product 7" width="150">
                     <p>Spider Plant<br>$12.00</p>
-                    <button type="button">Add to Cart</button>
+                    <button class="add-btn" type="button">Add to Cart</button>
                 </td>
                 <td align="center">
                     <img src="images/Client1_WateringCan.png" alt="Product 8" width="150">
                     <p>Watering Can<br>$8.00</p>
-                    <button type="button">Add to Cart</button>
+                    <button class="add-btn" type="button">Add to Cart</button>
                 </td>
             </tr>
         </table>
-
-        <hr>
-
-        <section id="newsletter">
-            <h3>Sign up for our Newsletter:</h3>
-            <form>
-                <input type="email" placeholder="Email Address">
-                <button type="submit">Subscribe</button>
-            </form>
-        </section>
+        <br>
+        <div id="cart-controls" style="text-align: center;">
+            <button id="clear-btn" type="button">Clear Cart</button>
+            <button id="process-btn" type="button">Process Order</button>
+        </div>
     </main>
 
     <footer>
+        <section id="newsletter">
+            <h3>Sign up for our Newsletter:</h3>
+            <form id="newsletter-form">
+                <input type="email" id="subscriber-email" placeholder="Email Address" required>
+                <button type="submit" id="subscribe-btn">Subscribe </button>
+            </form>
+        </section>
         <nav>
             <a href="#">Facebook</a>
             <a href="#">Twitter</a>
@@ -90,6 +91,37 @@
             <a href="#">Pinterest</a>
         </nav>
     </footer>
+    <script>
+    // 1. Newsletter Subscription
+    const subBtn = document.getElementById('subscribe-btn');
+    const subForm = document.getElementById('newsletter-form');
+    
+    if (subBtn && subForm) {
+    subBtn.addEventListener('click', function(event) {
+        if (subForm.checkValidity()) {
+            event.preventDefault();
+            alert("Thank you for subscribing.");
+            subForm.reset();
+        }
+    });
+    }
+    // 2. "Add to Cart" Buttons (for all items in the gallery)
+    const addButtons = document.querySelectorAll('.add-btn');
+    addButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            alert("Item added to the cart.");
+        });
+    });
 
+    // 3. "Clear Cart" Button
+    document.getElementById('clear-btn').addEventListener('click', () => {
+        alert("Cart cleared.");
+    });
+
+    // 4. "Process Order" Button
+    document.getElementById('process-btn').addEventListener('click', () => {
+        alert("Thank you for your order.");
+    });
+    </script>
 </body>
 </html>

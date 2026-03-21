@@ -27,12 +27,11 @@
         </section>
 
         <hr>
-
-        <section id="contact-form">
+<section id="contact-section">
             <h2>Contact Us</h2>
             <p>Use the form below for feedback or to start a custom order request.</p>
             
-            <form>
+            <form id="contact-form">
                 <label for="full-name">Name:</label><br>
                 <input type="text" id="full-name" name="full-name" placeholder="Your Name" required><br><br>
 
@@ -40,31 +39,29 @@
                 <input type="email" id="email-address" name="email-address" placeholder="email@example.com" required><br><br>
 
                 <label for="phone-number">Phone Number:</label><br>
-                <input type="tel" id="phone-number" name="phone-number" placeholder="555-555-5555"><br><br>
+                <input type="tel" id="phone-number" name="phone-number" placeholder="555-555-5555" required><br><br>
 
                 <label for="order-info">Feedback / Order Information:</label><br>
-                <textarea id="order-info" name="order-info" rows="6" cols="40" placeholder="Tell us what you're looking for..."></textarea><br><br>
+                <textarea id="order-info" name="order-info" rows="6" cols="40" required placeholder="Tell us what you're looking for..."></textarea><br><br>
 
                 <input type="checkbox" id="cancel-request" name="cancel-request">
                 <label for="cancel-request">Request to Cancel an Existing Order</label><br><br>
 
-                <button type="submit">Submit</button>
+                <button type="submit" id="submit-btn">Submit</button>
                 <button type="reset">Clear Form</button>
             </form>
         </section>
 
-        <hr>
-
-        <section id="newsletter">
-            <h3>Sign up for our Newsletter:</h3>
-            <form>
-                <input type="email" placeholder="Email Address">
-                <button type="submit">Subscribe</button>
-            </form>
-        </section>
     </main>
 
     <footer>
+        <section id="newsletter">
+            <h3>Sign up for our Newsletter:</h3>
+            <form id="newsletter-form">
+                <input type="email" id="subscriber-email" placeholder="Email Address" required>
+                <button type="submit" id="subscribe-btn">Subscribe </button>
+            </form>
+        </section>
         <nav>
             <a href="#">Facebook</a>
             <a href="#">Twitter</a>
@@ -72,6 +69,35 @@
             <a href="#">Pinterest</a>
         </nav>
     </footer>
+    <script>
+        const subBtn = document.getElementById('subscribe-btn');
+        const subForm = document.getElementById('newsletter-form');
+        
+        if (subBtn && subForm) {
+        subBtn.addEventListener('click', function(event) {
+            if (subForm.checkValidity()) {
+                event.preventDefault();
+                alert("Thank you for subscribing.");
+                subForm.reset();
+            }
+        });
+        }
 
+    const submitBtn = document.getElementById('submit-btn');
+    const contactForm = document.getElementById('contact-form');
+
+    if (submitBtn && contactForm) {
+        submitBtn.addEventListener('click', function(event) {
+
+            if (contactForm.checkValidity()) {
+                event.preventDefault(); 
+                alert("Thank you for your message.");
+                contactForm.reset(); 
+            }
+        });
+    }
+
+    </script>
+        
 </body>
 </html>

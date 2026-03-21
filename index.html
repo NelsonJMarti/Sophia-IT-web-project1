@@ -90,18 +90,16 @@
             </article>
         </section>
 
-        <hr>
-
-        <section id="newsletter">
-            <h3>Sign up for our Newsletter:</h3>
-            <form>
-                <input type="email" placeholder="Email Address">
-                <button type="submit">Subscribe</button>
-            </form>
-        </section>
     </main>
 
     <footer>
+        <section id="newsletter">
+            <h3>Sign up for our Newsletter:</h3>
+            <form id="newsletter-form">
+                <input type="email" id="subscriber-email" placeholder="Email Address" required>
+                <button type="submit" id="subscribe-btn">Subscribe </button>
+            </form>
+        </section>
         <nav>
             <a href="#">Facebook</a>
             <a href="#">Twitter</a>
@@ -109,6 +107,19 @@
             <a href="#">Pinterest</a>
         </nav>
     </footer>
-
+    <script>
+    const subBtn = document.getElementById('subscribe-btn');
+    const subForm = document.getElementById('newsletter-form');
+    
+    if (subBtn && subForm) {
+    subBtn.addEventListener('click', function(event) {
+        if (subForm.checkValidity()) {
+            event.preventDefault();
+            alert("Thank you for subscribing.");
+            subForm.reset();
+        }
+    });
+    }
+    </script>
 </body>
 </html>
