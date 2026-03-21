@@ -1,0 +1,126 @@
+/* General Page Styling */
+body {
+    background-color: #014038; /* Canopy Green */
+    color: #C5C3C3;            /* Willow Gray */
+    font-family: "Comic Sans MS", "Comic Sans", cursive; /* General Text */
+    margin: 0;
+    padding: 20px;
+}
+
+/* Typography for Headers */
+h1, h2, h3, nav a {
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Header & Navigation */
+header {
+    text-align: center;
+    border-bottom: 2px solid #96BAA0; /* Meadow Mist accent */
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+nav a {
+    color: #BDD4DA; /* Sky Bloom */
+    text-decoration: none;
+    margin: 0 15px;
+}
+
+nav a:hover {
+    color: #F0C06D; /* Sunlit Petal */
+}
+
+/* Promo Row */
+/* Container for the promo boxes */
+#promos {
+    display: flex;               
+    justify-content: center;     
+    align-items: center;         
+    gap: 20px;                   
+    margin: 20px 0;
+    flex-wrap: nowrap;           
+}
+
+/* The individual boxes around the images */
+#promos div {
+    background-color: #96BAA0;   /* Meadow Mist */
+    padding: 10px;
+    border-radius: 8px;
+    width: 120px;                
+    text-align: center;
+}
+
+#promos img {
+    max-width: 100%;             
+    height: auto;
+    border-radius: 4px;
+}
+
+/* Hero Section */
+#hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    background-color: rgba(247, 247, 247, 0.1); /* Cloudy Gray with transparency */
+    padding: 40px;
+    border-radius: 15px;
+}
+
+#hero img {
+    border: 5px solid #F0C06D; /* Sunlit Petal frame */
+}
+
+button {
+    background-color: #F0C06D; /* Sunlit Petal */
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
+    padding: 10px 25px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Value Perks & Highlights */
+#value-perks {
+    display: flex;               
+    justify-content: space-around; 
+    align-items: center;         
+    padding: 30px 0;
+    margin-top: 20px;
+    border-top: 2px solid #96BAA0; /* Meadow Mist divider line */
+}
+
+#value-perks h2 {
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
+    color: #C5C3C3;              /* Willow Gray */
+    margin: 0;
+    flex: 1;                     
+    text-align: left;
+}
+
+#value-perks div {
+    font-family: "Comic Sans MS", cursive;
+    color: #C5C3C3;              /* Willow Gray */
+    flex: 1;                     
+    text-align: center;          
+    font-size: 1.1rem;
+}
+
+/* Categories List */
+#categories {
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 50px;
+    padding: 20px;
+    border-top: 1px solid #96BAA0;
+}
