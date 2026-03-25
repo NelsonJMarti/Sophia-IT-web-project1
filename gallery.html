@@ -17,6 +17,7 @@
             <a href="testimonials.html">Testimonials</a>
         </nav>
         <br>
+        <button type="button" id="view-cart-btn">View Cart</button>
     </header>
 
     <main>
@@ -70,11 +71,22 @@
             </tr>
         </table>
         <br>
-        <div id="cart-controls" style="text-align: center;">
-            <button id="clear-btn" type="button">Clear Cart</button>
-            <button id="process-btn" type="button">Process Order</button>
-        </div>
+
     </main>
+
+    <div id="cart-modal" style="display:none; position:fixed; z-index:1; left:0; top:0; width:100%; height:100%; background-color:rgba(0,0,0,0.6);">
+        <div style="background-color:white; color: black; margin:10% auto; padding:20px; border-radius:8px; width:50%; box-shadow: 0 4px 8px rgba(0,0,0,0.2); position:relative;">
+            <span id="close-modal" style="position:absolute; right:20px; top:10px; cursor:pointer; font-size:24px;">&times;</span>
+            <h3>Your Cart</h3>
+            <ul id="cart-items-list" style="list-style-type: disc; margin-left: 20px;">
+                </ul>
+            <br>
+            <div style="text-align: left;">
+                <button id="clear-btn" type="button">Clear Cart</button>
+                <button id="process-btn" type="button">Process Order</button>
+            </div>
+        </div>
+    </div>
 
     <footer>
         <section id="newsletter">
@@ -91,37 +103,89 @@
             <a href="#">Pinterest</a>
         </nav>
     </footer>
+
     <script>
-    // 1. Newsletter Subscription
-    const subBtn = document.getElementById('subscribe-btn');
-    const subForm = document.getElementById('newsletter-form');
-    
-    if (subBtn && subForm) {
-    subBtn.addEventListener('click', function(event) {
-        if (subForm.checkValidity()) {
-            event.preventDefault();
-            alert("Thank you for subscribing.");
-            subForm.reset();
+        // --- 1. Newsletter Logic ---
+        const subBtn = document.getElementById('subscribe-btn');
+        const subForm = document.getElementById('newsletter-form');
+        if (subBtn && subForm) {
+            subBtn.addEventListener('click', function(event) {
+                if (subForm.checkValidity()) {
+                    event.preventDefault();
+                    alert("Thank you for subscribing.");
+                    subForm.reset();
+                }
+            });
         }
-    });
-    }
-    // 2. "Add to Cart" Buttons (for all items in the gallery)
-    const addButtons = document.querySelectorAll('.add-btn');
-    addButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            alert("Item added to the cart.");
+
+        // --- 2. Modal Controls ---
+        const modal = document.getElementById('cart-modal');
+        const viewBtn = document.getElementById('view-cart-btn');
+        const closeBtn = document.getElementById('close-modal');
+
+        viewBtn.onclick = function() {
+            renderCart();
+            modal.style.display = "block";
+        }
+
+        closeBtn.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // --- 3. Cart Logic with sessionStorage ---
+
+        // Add to Cart
+        const addButtons = document.querySelectorAll('.add-btn');
+        addButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Get the product name from the <p> tag in the same cell
+                const productName = button.parentElement.querySelector('p').innerText.split('$')[0].trim();
+                
+                // Get current cart from session storage or start a new array
+                let cart = JSON.parse(sessionStorage.getItem('nurseryCart')) || [];
+                cart.push(productName);
+                
+                // Save back to session storage
+                sessionStorage.setItem('nurseryCart', JSON.stringify(cart));
+                alert(productName + " added to the cart.");
+            });
         });
-    });
 
-    // 3. "Clear Cart" Button
-    document.getElementById('clear-btn').addEventListener('click', () => {
-        alert("Cart cleared.");
-    });
+        // Render Cart Items in the Modal
+        function renderCart() {
+            const list = document.getElementById('cart-items-list');
+            const cart = JSON.parse(sessionStorage.getItem('nurseryCart')) || [];
+            
+            list.innerHTML = ""; 
+            
+            if (cart.length === 0) {
+                list.innerHTML = "<li>Your cart is empty.</li>";
+            } else {
+                cart.forEach(item => {
+                    const li = document.createElement('li');
+                    li.textContent = item;
+                    list.appendChild(li);
+                });
+            }
+        }
 
-    // 4. "Process Order" Button
-    document.getElementById('process-btn').addEventListener('click', () => {
-        alert("Thank you for your order.");
-    });
+        // Clear Cart
+        document.getElementById('clear-btn').addEventListener('click', () => {
+            sessionStorage.removeItem('nurseryCart');
+            renderCart();
+            alert("Cart cleared.");
+        });
+
+        // Process Order
+        document.getElementById('process-btn').addEventListener('click', () => {
+            if (JSON.parse(sessionStorage.getItem('nurseryCart'))) {
+                alert("Thank you for your order.");
+                sessionStorage.removeItem('nurseryCart');
+                modal.style.display = "none";
+            } else {
+                alert("Your cart is empty!");
+            }
+        });
     </script>
 </body>
 </html>
