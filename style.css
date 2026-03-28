@@ -86,7 +86,8 @@ button {
 
 /* Value Perks & Highlights */
 #value-perks {
-    display: flex;               
+    display: flex;      
+    flex-wrap: wrap;         
     justify-content: space-around; 
     align-items: center;         
     padding: 30px 0;
@@ -131,6 +132,7 @@ button {
 table {
     width: 100%;
     border-collapse: collapse;
+    table-layout: fixed;
 }
 
 td img {
