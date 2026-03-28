@@ -64,7 +64,7 @@ nav a:hover {
     align-items: center;
     justify-content: space-between;
     gap: 40px;
-    background-color: rgba(247, 247, 247, 0.1); /* Cloudy Gray with transparency */
+    background-color: rgba(247, 247, 247, 0.1); 
     padding: 40px;
     border-radius: 15px;
 }
@@ -115,6 +115,16 @@ button {
     display: flex;
     justify-content: center;
     gap: 100px;
+}
+
+#categories a {
+    text-decoration: none; 
+    color: #BDD4DA; /* Sky Bloom */    
+}
+
+#categories a:hover {
+    text-decoration: underline;
+    color: #BDD4DA; /* Sky Bloom */           
 }
 
 /* Footer */
