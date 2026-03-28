@@ -61,6 +61,7 @@ nav a:hover {
 /* Hero Section */
 #hero {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     gap: 40px;
@@ -125,6 +126,16 @@ button {
 #categories a:hover {
     text-decoration: underline;
     color: #BDD4DA; /* Sky Bloom */           
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td img {
+    max-width: 100%;
+    height: auto;
 }
 
 /* Footer */
