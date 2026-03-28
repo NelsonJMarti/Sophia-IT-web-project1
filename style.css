@@ -71,7 +71,11 @@ nav a:hover {
 }
 
 #hero img {
-    border: 5px solid #F0C06D; /* Sunlit Petal frame */
+    border: 5px solid #F0C06D; 
+    max-width: 100%; 
+    height: auto;    
+    display: block;
+    margin: 0 auto; 
 }
 
 button {
@@ -116,9 +120,15 @@ button {
 #categories {
     display: flex;
     justify-content: center;
-    gap: 100px;
+    gap: 20px;       
+    flex-wrap: wrap; 
+    text-align: center;
 }
 
+#categories h2 {
+    width: 100%;     
+    font-size: 1.5rem; 
+}
 #categories a {
     text-decoration: none; 
     color: #BDD4DA; /* Sky Bloom */    
